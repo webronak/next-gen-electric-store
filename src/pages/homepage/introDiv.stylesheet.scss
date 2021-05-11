@@ -1,0 +1,20 @@
+@import "src/index.scss";
+
+.intro-div {
+  color: white;
+  background-image: url("desktop-main.jpg");
+  height: 60vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 97%;
+  margin: 15px auto;
+  text-align: center;
+  padding: 60px 50px 0px;
+  box-shadow: 0px 0px 10px grey;
+  border-radius: 5px;
+  button {
+    @include button;
+    margin: auto;
+  }
+}
