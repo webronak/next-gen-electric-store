@@ -1,8 +1,9 @@
 import './introDiv.stylesheet.scss';
+import desktopMain from './desktop-main.jpg';
 
 function IntroDiv () {
     return(
-        <div className="intro-div">
+        <div className="intro-div" style={{backgroundImage: `url(${desktopMain})`}}>
             <h1>Incredible Prices on All Your Favorite Items</h1>
             <button>
             shop now
