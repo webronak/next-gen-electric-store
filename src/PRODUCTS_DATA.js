@@ -1,6 +1,13 @@
+import sockets from './images/categories.images/socket.jpg';
+import switches from './images/categories.images/switches.jpg';
+import coolers from './images/categories.images/coolers.jpg';
+import bulbs from './images/categories.images/bulbs.jpg';
+import fans from './images/categories.images/fans.jpg';
+import holders from './images/categories.images/holders.jpg';
+
 const products = {
     sockets:{
-        img:`${process.env.PUBLIC_URL+"images/categories.images/socket.jpg"}`,
+        img:sockets,
         items:[
             {
                 _id:1,
@@ -41,7 +48,7 @@ const products = {
         ]
     },
     switches:{
-        img:`${process.env.PUBLIC_URL+"images/categories.images/switches.jpg"}`,
+        img:switches,
         items:[
             {
                 _id:1,
@@ -82,7 +89,7 @@ const products = {
         ]
     },
     coollers:{
-        img:`${process.env.PUBLIC_URL+"images/categories.images/coolers.jpg"}`,
+        img:coolers,
         items:[
             {
                 _id:1,
@@ -123,7 +130,7 @@ const products = {
         ]
     },
     bulbs:{
-        img:`${process.env.PUBLIC_URL+"images/categories.images/bulbs.jpg"}`,
+        img:bulbs,
         items:[
             {
                 _id:1,
@@ -164,7 +171,7 @@ const products = {
         ]
     },
     fans:{
-        img:`${process.env.PUBLIC_URL+"images/categories.images/fans.jpg"}`,
+        img:fans,
         items:[
             {
                 _id:1,
@@ -205,7 +212,7 @@ const products = {
         ]
     },
     holders:{
-        img:`${process.env.PUBLIC_URL+"images/categories.images/holders.jpg"}`,
+        img:holders,
         items:[
             {
                 _id:1,

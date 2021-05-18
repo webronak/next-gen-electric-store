@@ -18,7 +18,8 @@ var firebaseConfig = {
   export const firestore = firebase.firestore();
 
   export const savingUserInfo = async (userAuth,additionalData) => {
-    if (userAuth==null){
+    
+    if (!userAuth){
       console.log("userAuth is null"); 
       return;
     };
@@ -28,8 +29,7 @@ var firebaseConfig = {
     const getUser = await userRef.get(); 
     if(!getUser.exists){
       const { displayName, email } = userAuth;
-      const createdDate = new Date();
-      
+      const createdDate = new Date();     
       try{
         await userRef.set({
           displayName,

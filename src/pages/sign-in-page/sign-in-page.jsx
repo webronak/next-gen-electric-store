@@ -3,12 +3,15 @@ import './sign-in-page.stylesheet.scss';
 // for routing
 import { Link } from 'react-router-dom';
 // firebase
-import { auth, signInWithGoogle } from "../../firebase/firebase";
+import { auth, signInWithGoogle} from "../../firebase/firebase";
+import { connect } from "react-redux";
+
 
 class SignIn extends react.Component{
     constructor(){
         super();
         this.state={
+            currentUser:null,
             email:"",
             pass:""
         }
@@ -23,8 +26,9 @@ class SignIn extends react.Component{
 
         const { email, pass } = this.state;
         try{
+            // for email and pass word login
             await auth.signInWithEmailAndPassword(email, pass);
-            this.setState({})
+            
             alert("u are signed in>>>>");
         }catch(err){
             console.log(err);
@@ -57,11 +61,17 @@ class SignIn extends react.Component{
                         type="password" 
                         onChange={ this.handleChange }
                     /><br/>
-                    <small>don't have account? <Link to="/signup">sign up.</Link></small>
+                    {
+                        this.props.currentUser?
+                            <small style={{backgroundColor:"rgb(92, 190, 0)"}}>You are signed in as {this.props.currentUser.displayName}! Go to <Link to="/">homepage</Link>.</small>
+                            :
+                            <small style={{backgroundColor:"rgb(248, 0, 0)"}}>If you don't have account! Then <Link to="/signup">sign up.</Link></small>        
+                    }
+                    
                     <div className="input-buttons">
                         <button type="submit">sign in</button>
-                        <button class="googleBtn" onClick={ signInWithGoogle }>continue with google 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                        <button className="googleBtn" onClick={ signInWithGoogle }>continue with google 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-google" viewBox="0 0 16 16">
                                 <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
                             </svg>
                         </button>
@@ -72,4 +82,9 @@ class SignIn extends react.Component{
     }
 }
 
-export default SignIn; 
+const mapStateToProps = (state) => ({
+    currentUser:state.user.currentUser
+})
+
+
+export default connect(mapStateToProps)(SignIn); 

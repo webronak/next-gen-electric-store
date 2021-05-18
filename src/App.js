@@ -12,30 +12,26 @@ import { auth, savingUserInfo, firestore } from './firebase/firebase';
 // connecting react to redux
 import { connect } from "react-redux";
 // redux setUser action 
-import  SetUser  from "./redux/user/user-action"
+import  SetUser  from "./redux/user/user-action";
 
 class App extends react.Component{
   unSubscribeAuth = null;
-
   componentDidMount(){
-    this.unSubscribeAuth = auth.onAuthStateChanged(async userAuth =>{
-      if (userAuth) {
+    this.unSubscribeAuth = auth.onAuthStateChanged(async userAuth=>{
+      if(userAuth){
         const userRef = await savingUserInfo(userAuth);
-        userRef.onSnapshot(snapshot => {
-          return this.props.setCurrentUser({
-            currentUser:{
-              id:snapshot.id,
-              ...snapshot.data()
-            }
-          });
-        });
+        userRef.onSnapshot(snapshot=>{
+          return this.props.setUser({
+            id:snapshot.id,
+            ...snapshot.data()
+          })
+        })
       }
-      else if(!userAuth){
-        this.props.setCurrentUser(
-        );
-      }
+      return this.props.setUser(null);
     })
-  }
+  }  
+
+  
 
   componentWillUnmount(){
     this.unSubscribeAuth();
@@ -54,10 +50,9 @@ class App extends react.Component{
     ); 
   }
 }
-const mapStateToProps = (state) => ({
-  currentUser:state.user.currentUser
-})
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser:user=>dispatch(SetUser(user))
-})
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+
+const mapDispatchToProps = dispatch => ({
+  setUser: user => dispatch(SetUser(user))
+});
+
+export default connect(null,mapDispatchToProps)(App);
