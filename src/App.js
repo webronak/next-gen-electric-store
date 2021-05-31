@@ -2,7 +2,7 @@ import react from 'react';
 import Homepage from './pages/homepage/Homepage';
 import Navbar from './components/navbar.component/navbar';
 import Fotter from './components/fotter.component/fotter.component';
-import Productspage from './pages/productspage/productspage';
+import Productspage from './pages/productspage/Productspage';
 import SignIn from './pages/sign-in-page/sign-in-page';
 import SignUp from './pages/sign-up-page/sign-up-page';
 // for routing
@@ -13,6 +13,8 @@ import { auth, savingUserInfo, firestore } from './firebase/firebase';
 import { connect } from "react-redux";
 // redux setUser action 
 import  SetUser  from "./redux/user/user-action";
+// cart component
+import Cart from './components/cart.component/cart.component'
 
 class App extends react.Component{
   unSubscribeAuth = null;
@@ -27,7 +29,6 @@ class App extends react.Component{
           })
         })
       }
-      return this.props.setUser(null);
     })
   }  
 
@@ -44,7 +45,8 @@ class App extends react.Component{
                 <Route exact path="/" component={Homepage}/>
                 <Route exact path="/products" component={Productspage}/>
                 <Route exact path="/signin" render={()=>this.props.currentUser?(<Redirect to="/" />):(<SignIn />)} />          
-                <Route exact path="/signup" render={()=>this.props.currentUser?(<Redirect to="/" />):(<SignUp   />)} />          
+                <Route exact path="/signup" render={()=>this.props.currentUser?(<Redirect to="/" />):(<SignUp/>)} />          
+                <Cart/>
             <Fotter/>
         </div>
     ); 
@@ -52,7 +54,11 @@ class App extends react.Component{
 }
 
 const mapDispatchToProps = dispatch => ({
-  setUser: user => dispatch(SetUser(user))
+  setUser:user=>dispatch(SetUser(user))
 });
 
-export default connect(null,mapDispatchToProps)(App);
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
