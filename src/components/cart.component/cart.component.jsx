@@ -3,6 +3,8 @@ import "./cart.stylesheet.scss";
 import bulbImg from "../../images/categories.images/bulbs.jpg";
 import { connect } from "react-redux";
 import CartDisplayAction from "../../redux/cart/cart-display-action";
+// cart item selector (redux)
+import { selectCartItems } from '../../redux/cart/cart-selectors';
 
 const Cart = (props) => {
   return (
@@ -82,7 +84,7 @@ const Cart = (props) => {
 
 const mapStateToProps = (state) => ({
   cartToggle: state.cart.toggle,
-  cartItems: state.cart.cartItems,
+  cartItems: selectCartItems(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   setCartToggle: () => dispatch(CartDisplayAction()),

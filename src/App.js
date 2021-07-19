@@ -2,7 +2,7 @@ import react from 'react';
 import Homepage from './pages/homepage/Homepage';
 import Navbar from './components/navbar.component/navbar';
 import Fotter from './components/fotter.component/fotter.component';
-import Productspage from './pages/productspage/Productspage';
+import Productspage from './pages/productspage/productspage';
 import SignIn from './pages/sign-in-page/sign-in-page';
 import SignUp from './pages/sign-up-page/sign-up-page';
 // for routing
@@ -14,7 +14,8 @@ import { connect } from "react-redux";
 // redux setUser action 
 import  SetUser  from "./redux/user/user-action";
 // cart component
-import Cart from './components/cart.component/cart.component'
+import Cart from './components/cart.component/cart.component';
+
 
 class App extends react.Component{
   unSubscribeAuth = null;
@@ -40,6 +41,7 @@ class App extends react.Component{
 
   render(){
     return (
+      
         <div className="App">
             <Navbar/>
                 <Route exact path="/" component={Homepage}/>
@@ -49,6 +51,7 @@ class App extends react.Component{
                 <Cart/>
             <Fotter/>
         </div>
+
     ); 
   }
 }
