@@ -45,7 +45,7 @@ class App extends react.Component{
         <div className="App">
             <Navbar/>
                 <Route exact path="/" component={Homepage}/>
-                <Route exact path="/products" component={Productspage}/>
+                <Route exact path="/products/:productCat" component={Productspage}/>
                 <Route exact path="/signin" render={()=>this.props.currentUser?(<Redirect to="/" />):(<SignIn />)} />          
                 <Route exact path="/signup" render={()=>this.props.currentUser?(<Redirect to="/" />):(<SignUp/>)} />          
                 <Cart/>

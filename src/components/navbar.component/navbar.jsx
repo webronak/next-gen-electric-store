@@ -28,7 +28,7 @@ class Navbar extends react.Component{
                 </div>
                 <ul className={this.state.toggle? "navLinks toggle-navLinks" : "navLinks"}>
                     {this.state.navLinks.map((link,index)=>{
-                        return <Link to={link!=='Home'?link:"/"} key={index}>
+                        return <Link to={link==='Home'?"":link==='products'?"products/sockets":link} key={index}>
                             <li onClick={()=>this.setState({toggle:false})}>{link}</li>
                         </Link>
                     })}
