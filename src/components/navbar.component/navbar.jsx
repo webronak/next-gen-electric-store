@@ -101,7 +101,7 @@ class Navbar extends react.Component{
 
 const mapStateToProps = state => ({
     currentUser:state.user.currentUser,
-    totalCartItemsQuantity: selectCartItemTotalQuantity(state),
+    totalCartItemsQuantity: state.cart.cartItems.reduce((acc,cartItem)=>acc + cartItem.quantity,0),
 }); 
 const mapDispatchToProps = dispatch => ({
     setCartToggle:()=>dispatch(CartDisplayAction())

@@ -7,7 +7,3 @@ export const selectCartItems = createSelector(
     (cart)=>cart.cartItems
 );
 
-export const selectCartItemTotalQuantity = createSelector(
-    [selectCartItems],
-    (cartItems)=>cartItems.reduce((acc,cartItem)=>acc + cartItem.quantity,0)
-)

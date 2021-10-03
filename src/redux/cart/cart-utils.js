@@ -18,3 +18,19 @@ export const addCartItems = (existingCartItems, newCartItem) => {
       { ...newCartItem, quantity: 1, totalPrice: newCartItem.price },
     ];
 };
+
+export const removeReduceQuantity = (existingCartItems, itemIdToRemove) => {
+  
+  return existingCartItems.map(item => {
+    if(item._id === itemIdToRemove){
+      let updatedQuantity = Number(item.quantity) - 1;
+      
+      return{
+        ...item,
+        quantity:updatedQuantity,
+        totalPrice:updatedQuantity*item.price
+      }
+    }else return item;
+  }).filter(item => item.quantity !== 0);
+
+}

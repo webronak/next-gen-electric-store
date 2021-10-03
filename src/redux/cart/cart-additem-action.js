@@ -5,4 +5,12 @@ const CartAddItemAction = (item) => {
     }
 }
 
+export const CartRemoveReduceQuantity = (item_id) => {
+    
+    return{
+        type:"REDUCE_REMOVE",
+        payload:item_id
+    }
+}
+
 export default CartAddItemAction;

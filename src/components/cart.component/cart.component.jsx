@@ -12,15 +12,28 @@ const Cart = (props) => {
     <div
       className={props.cartToggle ? "cartComponent" : "cartComponent hidden"}
     >
-      <div className="cartItems">
-        {props.cartItems
+      <div className="cartItems" style={{position:"relative"}}>
+        {props.cartItems.length
           ? props.cartItems.map((item) => {
             console.log(item);
               return (
                 <CartItem item={item} />
               );
             })
-          : ""}
+          :(
+            <span style={{
+              position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    fontWeight: "900",
+    fontSize: "20px",
+    border: "2px dashed",
+    color: "#cacaca",
+    padding: "10px 25px",
+    borderRadius: "8px",
+            }}>Cart Is Empty</span>
+          )}
       </div>
       <div className="cartFotter">
         <button className="cartCollapse" onClick={() => props.setCartToggle()}>

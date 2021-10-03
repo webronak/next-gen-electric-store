@@ -1,8 +1,8 @@
-import { addCartItems } from './cart-utils';
+import { addCartItems, removeReduceQuantity } from "./cart-utils";
 
 const innitialState = {
-  toggle: false,
   cartItems: [],
+  toggle: false,
 };
 
 const cartReducer = (state = innitialState, action) => {
@@ -15,7 +15,12 @@ const cartReducer = (state = innitialState, action) => {
     case "ADD_ITEM":
       return {
         ...state,
-        cartItems: addCartItems(state.cartItems,action.payload),
+        cartItems: addCartItems(state.cartItems, action.payload),
+      };
+    case "REDUCE_REMOVE":
+      return {
+        ...state,
+        cartItems: removeReduceQuantity(state.cartItems, action.payload),
       };
 
     default:
