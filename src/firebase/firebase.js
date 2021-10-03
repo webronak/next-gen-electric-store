@@ -17,6 +17,20 @@ var firebaseConfig = {
   export const auth = firebase.auth();
   export const firestore = firebase.firestore();
 
+export const savingProductsCollection = async (collection, itemsToAdd) => {
+    const productCollectionRef = firestore.collection(collection);
+
+    // BATCH - to call multipal data save call at a Time.
+    const batch = firestore.batch();
+
+    itemsToAdd.forEach(item => {
+      const newDocRef =  productCollectionRef.doc();
+      batch.set(newDocRef, item);
+    })
+
+    return await batch.commit();
+}
+
   export const savingUserInfo = async (userAuth,additionalData) => {
     
     if (!userAuth){

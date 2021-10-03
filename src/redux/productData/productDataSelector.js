@@ -6,10 +6,10 @@ export const selectProductCategories = createSelector(
     [productData],
     (productData)=> {
         let catArr = [];
-        for(let key in productData){
+        for(let key in productData.data){
             catArr.push({
                 catName: key,
-                catImg:productData[key].img
+                catImg:productData.data[key].img
             })
         }
         return catArr;
