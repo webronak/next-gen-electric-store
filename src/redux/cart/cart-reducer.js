@@ -20,7 +20,7 @@ const cartReducer = (state = innitialState, action) => {
     case "REDUCE_REMOVE":
       return {
         ...state,
-        cartItems: removeReduceQuantity(state.cartItems, action.payload),
+        cartItems: state.cartItems.length?removeReduceQuantity(state.cartItems, action.payload):[],
       };
 
     default:

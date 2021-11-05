@@ -35,7 +35,7 @@ const ProductCatDisplayPanel = ({ match, cartAddItem, productData, isFetching })
         !productItems.length?(
            <span>NO PRODUCT AVAILABLE...</span>
             ):productItems.map((product) => {
-        return <ProductCard product={product} cartAddItem={cartAddItem} />;
+        return <ProductCard product={product} cartAddItem={cartAddItem} key={product._id} />;
       })}
         </>
       )

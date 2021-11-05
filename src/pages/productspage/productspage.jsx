@@ -32,11 +32,12 @@ class Productspage extends react.Component {
     return (
       <div className="productsPage">
         <div className="productCatBtns">
-          {dataArr.map((category) => {
+          {dataArr.map((category,i) => {
             return (
               <Link
                 to={`/products/${productData[category].forURL}`}
                 style={{ textDecoration: "none" }}
+                key={i}
               >
                 <button className="productCatBtn">{category}</button>
               </Link>

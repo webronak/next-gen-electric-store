@@ -7,7 +7,7 @@ import SignIn from "./pages/sign-in-page/sign-in-page";
 import SignUp from "./pages/sign-up-page/sign-up-page";
 import productData from "./PRODUCTS_DATA";
 
-import {AsynDataFetching} from "./redux/productData/productData.action";
+import {StartFetchingData} from "./redux/productData/productData.action";
 
 
 // for routing
@@ -88,7 +88,7 @@ fetchProductData();
 
 const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(SetUser(user)),
-  fetchProductData:() => dispatch(AsynDataFetching())
+  fetchProductData:() => dispatch(StartFetchingData())
 });
 
 const mapStateToProps = (state) => ({

@@ -3,37 +3,39 @@ import "./cart.stylesheet.scss";
 import bulbImg from "../../images/categories.images/bulbs.jpg";
 import { connect } from "react-redux";
 import CartDisplayAction from "../../redux/cart/cart-display-action";
-import CartItem from './cartItem-component';
+import CartItem from "./cartItem-component";
 // cart item selector (redux)
-import { selectCartItems } from '../../redux/cart/cart-selectors';
+import { selectCartItems } from "../../redux/cart/cart-selectors";
 
 const Cart = (props) => {
   return (
     <div
       className={props.cartToggle ? "cartComponent" : "cartComponent hidden"}
     >
-      <div className="cartItems" style={{position:"relative"}}>
-        {props.cartItems.length
-          ? props.cartItems.map((item) => {
+      <div className="cartItems" style={{ position: "relative" }}>
+        {props.cartItems && props.cartItems.length ? (
+          props.cartItems.map((item) => {
             console.log(item);
-              return (
-                <CartItem item={item} />
-              );
-            })
-          :(
-            <span style={{
+            return <CartItem item={item} />;
+          })
+        ) : (
+          <span
+            style={{
               position: "absolute",
-    left: "50%",
-    top: "50%",
-    transform: "translate(-50%, -50%)",
-    fontWeight: "900",
-    fontSize: "20px",
-    border: "2px dashed",
-    color: "#cacaca",
-    padding: "10px 25px",
-    borderRadius: "8px",
-            }}>Cart Is Empty</span>
-          )}
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              fontWeight: "900",
+              fontSize: "20px",
+              border: "2px dashed",
+              color: "#cacaca",
+              padding: "10px 25px",
+              borderRadius: "8px",
+            }}
+          >
+            Cart Is Empty
+          </span>
+        )}
       </div>
       <div className="cartFotter">
         <button className="cartCollapse" onClick={() => props.setCartToggle()}>
