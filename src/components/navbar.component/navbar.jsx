@@ -10,6 +10,7 @@ import logo from "../../images/logo.png";
 import CartDisplayAction from "../../redux/cart/cart-display-action";
 // total cart item quantity cart items
 import { selectCartItemTotalQuantity } from "../../redux/cart/cart-selectors";
+import { StartSignOut } from "../../redux/user/user-action";
 
 class Navbar extends react.Component {
   constructor() {
@@ -90,7 +91,8 @@ class Navbar extends react.Component {
               style={{ backgroundColor: "rgb(248, 0, 0)" }}
               id="signIn"
               onClick={() => {
-                auth.signOut();
+                this.props.signOut();
+                
               }}
             >
               <svg
@@ -155,5 +157,6 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   setCartToggle: () => dispatch(CartDisplayAction()),
+  signOut:() => dispatch(StartSignOut())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

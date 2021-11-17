@@ -1,5 +1,9 @@
 import react from 'react';
 import './sign-up-page.stylesheet.scss';
+import { connect } from "react-redux";
+import {
+    StartSignInWithGoogle,
+  } from "../../redux/user/user-action";
 // firebase
 import { auth, signInWithGoogle, savingUserInfo } from "../../firebase/firebase";
 
@@ -66,6 +70,9 @@ class SignUp extends react.Component{
     }
 
     render(){
+
+        const { signInWithGoogle } = this.props;
+
         return(
             <div className="signIn-signUp">
                 <div className="head">
@@ -138,4 +145,9 @@ class SignUp extends react.Component{
     }
 }
 
-export default SignUp; 
+const mapDispatchToProps = (dispatch) => ({
+    signInWithGoogle: () => dispatch(StartSignInWithGoogle()),
+    
+  });
+
+export default connect(null, mapDispatchToProps)(SignUp); 

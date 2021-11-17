@@ -13,7 +13,7 @@ function* fetchData() {
     const snapshot = yield productsRef.get();
 
     const dataFromFirebase = yield call(convertCollectionSnapshotToMap, snapshot);
-    yield console.log("Hi, ronak!!!",dataFromFirebase);
+   yield console.log(dataFromFirebase)
     yield put(
       SetProductData(
         dataFromFirebase.reduce((acc, data) => {

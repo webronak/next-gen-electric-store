@@ -7,8 +7,7 @@ import SignIn from "./pages/sign-in-page/sign-in-page";
 import SignUp from "./pages/sign-up-page/sign-up-page";
 import productData from "./PRODUCTS_DATA";
 
-import {StartFetchingData} from "./redux/productData/productData.action";
-
+import { StartFetchingData } from "./redux/productData/productData.action";
 
 // for routing
 import { Route, Redirect } from "react-router-dom";
@@ -22,33 +21,27 @@ import {
 // connecting react to redux
 import { connect } from "react-redux";
 // redux setUser action
-import SetUser from "./redux/user/user-action";
+import {SetUser} from "./redux/user/user-action";
 // cart component
 import Cart from "./components/cart.component/cart.component";
 
 class App extends react.Component {
-  
   unSubscribeAuth = null;
   componentDidMount() {
-const {fetchProductData} = this.props;
-fetchProductData();
-    this.unSubscribeAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await savingUserInfo(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          return this.props.setUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      }
-    });
+    const { fetchProductData } = this.props;
+    fetchProductData();
+    // this.unSubscribeAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await savingUserInfo(userAuth);
+    //     userRef.onSnapshot((snapshot) => {
+    //       return this.props.setUser({
+    //         id: snapshot.id,
+    //         ...snapshot.data(),
+    //       });
+    //     });
+    //   }
+    // });
 
-    
-  
-
-    
-    
     // savingProductsCollection('Products', Object.keys(productData).map(key => ({
     //   category:key,
     //   items:productData[key].items
@@ -56,7 +49,7 @@ fetchProductData();
   }
 
   componentWillUnmount() {
-    this.unSubscribeAuth();
+    // this.unSubscribeAuth();
   }
 
   render() {
@@ -88,7 +81,7 @@ fetchProductData();
 
 const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(SetUser(user)),
-  fetchProductData:() => dispatch(StartFetchingData())
+  fetchProductData: () => dispatch(StartFetchingData()),
 });
 
 const mapStateToProps = (state) => ({
