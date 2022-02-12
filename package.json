@@ -2,6 +2,9 @@
   "name": "package.json",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "14.16.1"
+  },
   "dependencies": {
     "@ngrx/store-devtools": "^13.0.2",
     "@testing-library/jest-dom": "^5.11.9",
