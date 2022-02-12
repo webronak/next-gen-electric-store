@@ -1,9 +1,7 @@
 {
-  "homepage": "https://webronak.github.io/e-commerce-project",
-  "name": "front-end",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:5000",
+  "name": "package.json",
+  "version": "1.0.0",
+  "main": "index.js",
   "dependencies": {
     "@ngrx/store-devtools": "^13.0.2",
     "@testing-library/jest-dom": "^5.11.9",
