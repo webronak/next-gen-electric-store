@@ -7,7 +7,7 @@ const ProductCard = ({ product, cartAddItem }) => {
     <div className="productCard">
       <div
         className="productImg"
-        style={{ backgroundImage: `url(${imageDumy})` }}
+        style={{ backgroundImage: `url(${product.img})` }}
       ></div>
       <div className="productDesc">
         <div className="nameAndPrice">

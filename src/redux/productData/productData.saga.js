@@ -11,9 +11,9 @@ function* fetchData() {
     
     const productsRef = yield firestore.collection("Products");
     const snapshot = yield productsRef.get();
+    // yield console.log("ebhcvhevcie",snapshot)
 
     const dataFromFirebase = yield call(convertCollectionSnapshotToMap, snapshot);
-   yield console.log(dataFromFirebase)
     yield put(
       SetProductData(
         dataFromFirebase.reduce((acc, data) => {

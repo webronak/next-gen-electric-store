@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./cart.stylesheet.scss";
 import bulbImg from "../../images/categories.images/bulbs.jpg";
 import { connect } from "react-redux";
 import CartDisplayAction from "../../redux/cart/cart-display-action";
 import CartItem from "./cartItem-component";
-// cart item selector (redux)
+import { useSelector } from "react-redux";
 import { selectCartItems } from "../../redux/cart/cart-selectors";
+import StripeCheckoutBtn from "../stripe.component/StripeCheckoutBtn";
 
 const Cart = (props) => {
+  
   return (
     <div
       className={props.cartToggle ? "cartComponent" : "cartComponent hidden"}
@@ -51,9 +53,10 @@ const Cart = (props) => {
             />
           </svg>
         </button>
-        <button type="button" className="cartCheckout">
+        <StripeCheckoutBtn className="cartCheckout" />
+        {/* <button type="button" className="cartCheckout">
           Checkout: $
-        </button>
+        </button> */}
       </div>
     </div>
   );

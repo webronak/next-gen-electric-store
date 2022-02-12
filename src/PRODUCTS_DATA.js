@@ -124,7 +124,7 @@ const products = {
                 packing:"10 pcs. in box",
                 img:wipro,
                 price:38,
-                searchTags:"sipro switch switches"
+                searchTags:"wipro switch switches"
             }
         ]
     },

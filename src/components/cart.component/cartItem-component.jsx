@@ -8,7 +8,7 @@ const CartItem = ({ item }) => {
         <div className="cartItem">
                   <div
                     className="cartItemImg"
-                    style={{ backgroundImage: `url(${bulbImg})` }}
+                    style={{ backgroundImage: `url(${item.img})` }}
                   ></div>
                   <div className="cartItemDetail">
                     <div className="cartItemName">{item.name}</div>

@@ -66,6 +66,8 @@ export const savingUserInfo = async (userAuth, additionalData) => {
 };
 
 export const convertCollectionSnapshotToMap = (snapshot) => {
+  console.log("ebhcvhevcie",snapshot.docs)
+
   const imagesArray = { sockets, switches, coollers, bulbs, fans, holders };
   return snapshot.docs.map((doc) => {
     const { category, items } = doc.data();

@@ -1,5 +1,6 @@
 import react from "react";
 import Homepage from "./pages/homepage/Homepage";
+import { withRouter } from "react-router";
 import Navbar from "./components/navbar.component/navbar";
 import Fotter from "./components/fotter.component/fotter.component";
 import Productspage from "./pages/productspage/productspage";
@@ -10,7 +11,7 @@ import productData from "./PRODUCTS_DATA";
 import { StartFetchingData } from "./redux/productData/productData.action";
 
 // for routing
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, useLocation } from "react-router-dom";
 // firebase
 import {
   auth,
@@ -26,6 +27,7 @@ import {SetUser} from "./redux/user/user-action";
 import Cart from "./components/cart.component/cart.component";
 
 class App extends react.Component {
+  
   unSubscribeAuth = null;
   componentDidMount() {
     const { fetchProductData } = this.props;
@@ -53,6 +55,8 @@ class App extends react.Component {
   }
 
   render() {
+   
+    console.log("drghdj",this.props)
     return (
       <div className="App">
         <Navbar />
@@ -88,4 +92,4 @@ const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
